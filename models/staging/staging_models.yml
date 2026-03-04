@@ -6,6 +6,11 @@ models:
     columns:
       - name: customer_id
         description: Primary key.
+        tests:
+          - unique:
+              severity: error
+          - not_null:
+              severity: error
       - name: first_name
         description: Customer first name.
       - name: last_name
@@ -15,20 +20,54 @@ models:
     columns:
       - name: order_id
         description: Primary key.
+        tests:
+          - unique:
+              severity: error
+          - not_null:
+              severity: error
       - name: customer_id
         description: Foreign key to stg_customers.customer_id.
+        tests:
+          - not_null:
+              severity: error
+          - relationships:
+              field: customer_id
+              to: ref('stg_customers')
       - name: order_date
         description: Date when the order was placed.
       - name: order_status
-        description: Current status of the order (e.g., 'completed', 'pending').
+        description: Current status of the order.
+        tests:
+          - not_null:
+              severity: warn
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+              severity: warn
   - name: stg_payments
     description: One record per payment, cleaned from raw_payments.
     columns:
       - name: payment_id
         description: Primary key.
+        tests:
+          - unique:
+              severity: error
+          - not_null:
+              severity: error
       - name: order_id
         description: Foreign key to stg_orders.order_id.
+        tests:
+          - not_null:
+              severity: error
+          - relationships:
+              field: order_id
+              to: ref('stg_orders')
       - name: payment_method
         description: Method used for the payment (e.g., 'credit_card', 'paypal').
+        tests:
+          - not_null:
+              severity: warn
       - name: amount
         description: Amount of the payment.
+        tests:
+          - not_null:
+              severity: warn

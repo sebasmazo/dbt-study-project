@@ -12,7 +12,7 @@ A hands-on learning project for [dbt (data build tool)](https://docs.getdbt.com/
 - [x] Seed data (raw customers, orders, payments)
 - [x] Staging models
 - [x] Gold models (facts & dimensions)
-- [ ] Data tests
+- [x] Data tests (built-in: unique, not_null, relationships, accepted_values)
 - [ ] Macros
 - [ ] Snapshots (SCD)
 - [ ] Orchestration (Airflow or Dagster)
@@ -141,7 +141,7 @@ The local database is stored in `dev.duckdb`.
 | **`ref()`** | Links models into a DAG, ensuring correct build order |
 | **`source()`** | Declares external/seed tables; separates ingestion from transformation |
 | **Seeds** | Load static CSV data into the warehouse with `dbt seed` |
-| **Schema tests** | `unique`, `not_null`, `relationships`, `accepted_values` in `.yml` |
+| **Schema tests** | `unique`, `not_null`, `relationships`, `accepted_values` with `severity: error/warn` |
 | **Staging layer** | Cleans and standardizes raw sources, one model per source table |
 | **Gold layer** | Wide, business-oriented facts and dimensions ready for consumption |
 | **Macros** | Reusable Jinja2 SQL logic (planned) |
