@@ -1,0 +1,7 @@
+target/
+dbt_packages/
+logs/
+jaffle_shop_venv/
+*.duckdb*
+*.wal
+*.tmp/
