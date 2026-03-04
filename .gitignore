@@ -5,3 +5,4 @@ jaffle_shop_venv/
 *.duckdb*
 *.wal
 *.tmp/
+.vscode/settings.json
