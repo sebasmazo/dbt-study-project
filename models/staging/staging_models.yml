@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: One record per customer, cleaned from raw_customers.
+    columns:
+      - name: customer_id
+        description: Primary key.
+      - name: first_name
+        description: Customer first name.
+      - name: last_name
+        description: Customer last name.
+  - name: stg_orders
+    description: One record per order, cleaned from raw_orders.
+    columns:
+      - name: order_id
+        description: Primary key.
+      - name: user_id
+        description: Foreign key to stg_customers.customer_id.
+      - name: order_date
+        description: Date when the order was placed.
+      - name: order_status
+        description: Current status of the order (e.g., 'completed', 'pending').
+  - name: stg_payments
+    description: One record per payment, cleaned from raw_payments.
+    columns:
+      - name: payment_id
+        description: Primary key.
+      - name: order_id
+        description: Foreign key to stg_orders.order_id.
+      - name: payment_method
+        description: Method used for the payment (e.g., 'credit_card', 'paypal').
+      - name: amount
+        description: Amount of the payment.

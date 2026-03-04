@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: fct_finance_payments
+    description: Fact table with one record per payment, user, date and status, including amount.
+    columns:
+      - name: order_id
+        description: Foreign key to stg_orders.order_id.
+      - name: customer_id
+        description: Foreign key to stg_customers.customer_id.
+      - name: payment_id
+        description: Foreign key to stg_payments.payment_id.
+      - name: order_date
+        description: Date when the order was placed.
+      - name: order_status
+        description: Current status of the order (e.g., 'completed', 'pending').
+      - name: payment_method
+        description: Method used for the payment (e.g., 'credit_card', 'paypal').
+      - name: amount
+        description: Amount of the payment.
+  - name: dim_customers
+    description: Dimension table with one record per customer, including first and last name and analytical information.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer.
+      - name: first_name
+        description: First name of the customer.
+      - name: last_name
+        description: Last name of the customer.
+      - name: first_order_date
+        description: Date when the customer placed their first order.
+      - name: last_order_date
+        description: Date when the customer placed their most recent order.
+      - name: total_orders
+        description: Total number of orders placed by the customer.
+      - name: avg_ticket
+        description: Average amount spent per order by the customer.

@@ -1,0 +1,35 @@
+version: 2
+
+seeds:
+  - name: raw_customers
+    description: One record per customer. Source data loaded via CSV seed.
+    columns:
+      - name: id
+        description: Primary key.
+      - name: first_name
+        description: Customer first name.
+      - name: last_name
+        description: Customer last name.
+  - name: raw_orders
+    description: One record per order placed by a customer.
+    columns:
+      - name: id
+        description: Primary key.
+      - name: user_id
+        description: Foreign key to raw_customers.id.
+      - name: order_date
+        description: Date the order was placed.
+      - name: status
+        description: Current order status.
+  - name: raw_payments
+    description: One record per payment. Orders may have multiple payments.
+    columns:
+      - name: id
+        description: Primary key.
+      - name: order_id
+        description: Foreign key to raw_orders.id.
+      - name: payment_method
+        description: Method used for payment.
+      - name: amount
+        description: Payment amount in cents.
+

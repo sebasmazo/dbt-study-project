@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: Raw e-commerce data loaded via dbt seeds.
+    schema: main
+    tables:
+      - name: raw_customers
+        description: One record per customer.
+      - name: raw_orders
+        description: One record per order placed by a customer.
+      - name: raw_payments
+        description: One record per payment. Orders may have multiple payments.
