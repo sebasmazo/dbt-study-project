@@ -13,8 +13,8 @@ A hands-on learning project for [dbt (data build tool)](https://docs.getdbt.com/
 - [x] Staging models
 - [x] Gold models (facts & dimensions)
 - [x] Data tests (built-in: unique, not_null, relationships, accepted_values)
+- [ ] Incremental Load and Snapshots (SCD)
 - [ ] Macros
-- [ ] Snapshots (SCD)
 - [ ] Orchestration (Airflow or Dagster)
 
 ---

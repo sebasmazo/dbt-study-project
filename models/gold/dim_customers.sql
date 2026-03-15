@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='customer_id' 
+    )
+}}
 WITH tmp AS (
     SELECT
         customer_id,
@@ -20,3 +26,4 @@ FROM tmp
 INNER JOIN {{ ref('stg_customers') }} AS c
 ON tmp.customer_id = c.customer_id
 GROUP BY 1, 2, 3
+--SCP Type 1
